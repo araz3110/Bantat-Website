@@ -11,57 +11,37 @@
         box-sizing: border-box;
       }
 
+      :root {
+        --cream: #f5ead7;
+        --cream-soft: rgba(255, 248, 238, 0.9);
+        --brown: #4a3421;
+        --gold: #9b6a2b;
+        --shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      }
+
       body {
         font-family: Arial, Helvetica, sans-serif;
-        background: #f5ead7;
-        color: #2f2418;
+        background: linear-gradient(180deg, #f7eddc 0%, #f1e2c8 100%);
+        color: var(--brown);
       }
 
       .page {
         min-height: 100vh;
-        background:
-          linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)),
-          #f5ead7;
+        padding: 16px;
       }
 
-      .topbar {
+      .hero {
         position: relative;
-        max-width: 1400px;
+        max-width: 1450px;
+        min-height: calc(100vh - 32px);
         margin: 0 auto;
-        padding: 18px 28px 0;
-      }
-
-      .lang {
-        position: absolute;
-        top: 22px;
-        right: 28px;
-        font-size: 18px;
-        font-weight: 600;
-        color: #4a3522;
-        letter-spacing: 0.04em;
-      }
-
-      .lang span {
-        opacity: 0.45;
-        margin: 0 8px;
-      }
-
-      .hero-wrap {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 10px 24px 28px;
-      }
-
-      .hero-card {
-        position: relative;
-        min-height: 860px;
         border-radius: 28px;
         overflow: hidden;
         background: #efe2cc;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
       }
 
-      .hero-image {
+      .hero-bg {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -73,45 +53,107 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(to bottom, rgba(255,248,236,0.55) 0%, rgba(255,248,236,0.18) 24%, rgba(0,0,0,0.00) 40%, rgba(0,0,0,0.10) 100%);
+          linear-gradient(
+            to bottom,
+            rgba(255, 250, 241, 0.72) 0%,
+            rgba(255, 250, 241, 0.32) 18%,
+            rgba(255, 250, 241, 0.08) 40%,
+            rgba(0, 0, 0, 0.08) 78%,
+            rgba(0, 0, 0, 0.16) 100%
+          );
       }
 
-      .logo-area {
+      .topbar {
         position: absolute;
-        top: 28px;
+        top: 18px;
+        left: 24px;
+        right: 24px;
+        z-index: 3;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+
+      .lang-switch {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .lang-btn {
+        border: 1px solid rgba(110, 77, 35, 0.16);
+        background: rgba(255, 255, 255, 0.72);
+        color: #6a4823;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+      }
+
+      .lang-btn.active {
+        background: #ffffff;
+        color: #7a4d18;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-wrap {
+        position: absolute;
+        top: 26px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 3;
-        text-align: center;
-        width: min(92%, 560px);
+        width: min(540px, 68vw);
       }
 
-      .logo-area img {
+      .logo-wrap img {
         width: 100%;
         height: auto;
         display: block;
-        filter: drop-shadow(0 6px 18px rgba(0,0,0,0.20));
+        filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.16));
       }
 
-      .soon-badge {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 18px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.72);
-        border: 1px solid rgba(120, 83, 37, 0.18);
-        color: #5a3b1b;
-        font-size: 13px;
-        font-weight: 800;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        backdrop-filter: blur(5px);
-      }
-
-      .contact-panel {
+      .center-message {
         position: absolute;
         left: 50%;
-        bottom: 28px;
+        top: 43%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        width: min(92%, 980px);
+        text-align: center;
+      }
+
+      .center-message h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(42px, 6.2vw, 92px);
+        line-height: 0.95;
+        font-weight: 700;
+        color: #4a2f16;
+        text-shadow: 0 4px 14px rgba(255, 255, 255, 0.28);
+        letter-spacing: 0.01em;
+      }
+
+      .center-message h1 span {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .center-message p {
+        margin-top: 18px;
+        font-size: clamp(15px, 1.55vw, 24px);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: rgba(86, 56, 25, 0.88);
+        text-transform: uppercase;
+      }
+
+      .contacts {
+        position: absolute;
+        left: 50%;
+        bottom: 24px;
         transform: translateX(-50%);
         z-index: 3;
         width: calc(100% - 40px);
@@ -121,98 +163,121 @@
         gap: 18px;
       }
 
-      .contact-box {
-        background: rgba(255, 248, 238, 0.86);
-        border: 1px solid rgba(132, 95, 51, 0.14);
+      .card {
+        background: rgba(255, 248, 238, 0.9);
+        border: 1px solid rgba(130, 92, 46, 0.14);
         border-radius: 24px;
         padding: 22px 24px;
+        box-shadow: var(--shadow);
         backdrop-filter: blur(8px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.10);
       }
 
-      .contact-box h2 {
+      .card h2 {
         font-size: 15px;
         font-weight: 800;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: #8d5a1e;
+        color: var(--gold);
         margin-bottom: 12px;
       }
 
-      .contact-box p {
+      .card p {
         font-size: 15px;
         line-height: 1.65;
         color: #3f2d1d;
         margin-bottom: 10px;
       }
 
-      .contact-box p:last-child {
+      .card p:last-child {
         margin-bottom: 0;
       }
 
-      .contact-box strong {
+      .card strong {
         color: #6d4518;
       }
 
-      @media (max-width: 980px) {
-        .hero-card {
-          min-height: 980px;
+      @media (max-width: 1100px) {
+        .center-message {
+          top: 41%;
         }
 
-        .contact-panel {
+        .contacts {
           grid-template-columns: 1fr;
+          max-width: 900px;
+        }
+
+        .hero {
+          min-height: 1180px;
         }
       }
 
-      @media (max-width: 700px) {
+      @media (max-width: 720px) {
+        .page {
+          padding: 8px;
+        }
+
+        .hero {
+          min-height: 1120px;
+          border-radius: 20px;
+        }
+
         .topbar {
-          padding: 14px 14px 0;
+          top: 10px;
+          left: 12px;
+          right: 12px;
         }
 
-        .lang {
-          top: 16px;
-          right: 16px;
-          font-size: 14px;
+        .lang-switch {
+          gap: 6px;
         }
 
-        .hero-wrap {
-          padding: 8px 10px 16px;
+        .lang-btn {
+          padding: 7px 10px;
+          font-size: 11px;
         }
 
-        .hero-card {
-          min-height: 920px;
-          border-radius: 18px;
+        .logo-wrap {
+          top: 40px;
+          width: min(360px, 76vw);
         }
 
-        .logo-area {
-          top: 18px;
-          width: min(92%, 360px);
+        .center-message {
+          top: 34%;
+          width: calc(100% - 28px);
         }
 
-        .soon-badge {
-          font-size: 10px;
-          letter-spacing: 0.14em;
-          padding: 8px 12px;
-          margin-top: 8px;
+        .center-message h1 {
+          font-size: clamp(34px, 10vw, 58px);
+          line-height: 1.02;
         }
 
-        .contact-panel {
+        .center-message h1 span {
+          margin-top: 4px;
+        }
+
+        .center-message p {
+          margin-top: 12px;
+          font-size: 13px;
+          letter-spacing: 0.1em;
+        }
+
+        .contacts {
           width: calc(100% - 20px);
           bottom: 14px;
           gap: 12px;
         }
 
-        .contact-box {
-          border-radius: 16px;
+        .card {
           padding: 16px 14px;
+          border-radius: 18px;
         }
 
-        .contact-box h2 {
+        .card h2 {
           font-size: 12px;
           margin-bottom: 8px;
         }
 
-        .contact-box p {
+        .card p {
           font-size: 13px;
           line-height: 1.55;
         }
@@ -221,53 +286,127 @@
   </head>
   <body>
     <div class="page">
-      <div class="topbar">
-        <div class="lang">DE <span>|</span> TR <span>|</span> EN <span>|</span> FR</div>
-      </div>
+      <section class="hero">
+        <img
+          src="./public/images/bantat-hero.png"
+          alt="Bantat Hero"
+          class="hero-bg"
+        />
+        <div class="hero-overlay"></div>
 
-      <div class="hero-wrap">
-        <section class="hero-card">
-          <img
-            src="./public/images/bantat-hero.png"
-            alt="Bantat Hero"
-            class="hero-image"
-          />
-          <div class="hero-overlay"></div>
+        <div class="topbar">
+          <div class="lang-switch">
+            <button class="lang-btn active" data-lang="de">DE</button>
+            <button class="lang-btn" data-lang="tr">TR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+          </div>
+        </div>
 
-          <div class="logo-area">
-            <img
-              src="./public/images/bantat-logo.png"
-              alt="Bantat Logo"
-            />
-            <div class="soon-badge">Sehr bald</div>
+        <div class="logo-wrap">
+          <img src="./public/images/bantat-logo.png" alt="Bantat Logo" />
+        </div>
+
+        <div class="center-message">
+          <h1 id="soonTitle">
+            SEHR BALD
+            <span>COMING SOON</span>
+          </h1>
+          <p id="soonSub">Bantat website is being prepared</p>
+        </div>
+
+        <div class="contacts">
+          <div class="card">
+            <h2 id="exporterTitle">Exporteur</h2>
+            <p>
+              AZEMMİRAN GIDA ITH HR SAN TIC LTD ST<br />
+              AKCALAR MAH. KAPTAN SOK NO 13 A/B<br />
+              NİLÜFER - BURSA – TÜRKIYE
+            </p>
+            <p><strong id="telLabel1">Tel:</strong> +90 5322081689 // +49 151 47416270</p>
+            <p><strong id="mailLabel1">E-Mail:</strong> k.turan@bantat.eu</p>
           </div>
 
-          <div class="contact-panel">
-            <div class="contact-box">
-              <h2>Exporteur</h2>
-              <p>
-                AZEMMİRAN GIDA ITH HR SAN TIC LTD ST<br />
-                AKCALAR MAH. KAPTAN SOK NO 13 A/B<br />
-                NİLÜFER - BURSA – TÜRKIYE
-              </p>
-              <p><strong>Tel:</strong> +90 5322081689 // +49 151 47416270</p>
-              <p><strong>E-Mail:</strong> k.turan@bantat.eu</p>
-            </div>
-
-            <div class="contact-box">
-              <h2>Importeur</h2>
-              <p>
-                BANTAT LEBENSMITTEL – KENAN DURMAZ<br />
-                STUTTGARTER STRASSE 11-13<br />
-                70825 KORNTAL - MUNCHINGEN<br />
-                DEUTSCHLAND
-              </p>
-              <p><strong>Tel:</strong> +49 173 4357479</p>
-              <p><strong>E-Mail:</strong> info@bantat.eu</p>
-            </div>
+          <div class="card">
+            <h2 id="importerTitle">Importeur</h2>
+            <p>
+              BANTAT LEBENSMITTEL – KENAN DURMAZ<br />
+              STUTTGARTER STRASSE 11-13<br />
+              70825 KORNTAL - MUNCHINGEN<br />
+              DEUTSCHLAND
+            </p>
+            <p><strong id="telLabel2">Tel:</strong> +49 173 4357479</p>
+            <p><strong id="mailLabel2">E-Mail:</strong> info@bantat.eu</p>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
+
+    <script>
+      const translations = {
+        de: {
+          soonTitle: ['SEHR BALD', 'COMING SOON'],
+          soonSub: 'Bantat Website wird vorbereitet',
+          exporterTitle: 'Exporteur',
+          importerTitle: 'Importeur',
+          tel: 'Tel:',
+          mail: 'E-Mail:'
+        },
+        tr: {
+          soonTitle: ['ÇOK YAKINDA', 'COMING SOON'],
+          soonSub: 'Bantat web sitesi hazırlanıyor',
+          exporterTitle: 'İhracatçı',
+          importerTitle: 'İthalatçı',
+          tel: 'Tel:',
+          mail: 'E-Posta:'
+        },
+        en: {
+          soonTitle: ['COMING SOON', 'SEHR BALD'],
+          soonSub: 'Bantat website is being prepared',
+          exporterTitle: 'Exporter',
+          importerTitle: 'Importer',
+          tel: 'Tel:',
+          mail: 'E-Mail:'
+        },
+        fr: {
+          soonTitle: ['BIENTÔT', 'COMING SOON'],
+          soonSub: 'Le site web de Bantat est en préparation',
+          exporterTitle: 'Exportateur',
+          importerTitle: 'Importateur',
+          tel: 'Tél.:',
+          mail: 'E-mail:'
+        }
+      };
+
+      const buttons = document.querySelectorAll('.lang-btn');
+      const soonTitle = document.getElementById('soonTitle');
+      const soonSub = document.getElementById('soonSub');
+      const exporterTitle = document.getElementById('exporterTitle');
+      const importerTitle = document.getElementById('importerTitle');
+      const telLabel1 = document.getElementById('telLabel1');
+      const telLabel2 = document.getElementById('telLabel2');
+      const mailLabel1 = document.getElementById('mailLabel1');
+      const mailLabel2 = document.getElementById('mailLabel2');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const lang = btn.dataset.lang;
+          const t = translations[lang];
+
+          soonTitle.innerHTML = `${t.soonTitle[0]}<span>${t.soonTitle[1]}</span>`;
+          soonSub.textContent = t.soonSub;
+          exporterTitle.textContent = t.exporterTitle;
+          importerTitle.textContent = t.importerTitle;
+          telLabel1.textContent = t.tel;
+          telLabel2.textContent = t.tel;
+          mailLabel1.textContent = t.mail;
+          mailLabel2.textContent = t.mail;
+          document.documentElement.lang = lang;
+        });
+      });
+    </script>
   </body>
 </html>
