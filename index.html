@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BANTAT | Sehr bald / Coming Soon</title>
+    <title>BANTAT | Sehr bald</title>
     <style>
       * {
         margin: 0;
@@ -11,117 +11,138 @@
         box-sizing: border-box;
       }
 
-      html,
       body {
-        width: 100%;
-        min-height: 100%;
         font-family: Arial, Helvetica, sans-serif;
-        background: #f4ead8;
+        background: #f5ead7;
+        color: #2f2418;
       }
 
-      body {
-        color: #ffffff;
-      }
-
-      .hero {
-        position: relative;
+      .page {
         min-height: 100vh;
-        width: 100%;
-        background-image: url("./public/images/bantat-hero.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow: hidden;
+        background:
+          linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)),
+          #f5ead7;
       }
 
-      .overlay {
+      .topbar {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 18px 28px 0;
+      }
+
+      .lang {
+        position: absolute;
+        top: 22px;
+        right: 28px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #4a3522;
+        letter-spacing: 0.04em;
+      }
+
+      .lang span {
+        opacity: 0.45;
+        margin: 0 8px;
+      }
+
+      .hero-wrap {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 10px 24px 28px;
+      }
+
+      .hero-card {
+        position: relative;
+        min-height: 860px;
+        border-radius: 28px;
+        overflow: hidden;
+        background: #efe2cc;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      .hero-image {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.03),
-          rgba(0, 0, 0, 0.06),
-          rgba(0, 0, 0, 0.24)
-        );
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
-      .brand-area {
+      .hero-overlay {
         position: absolute;
-        top: 26px;
+        inset: 0;
+        background:
+          linear-gradient(to bottom, rgba(255,248,236,0.55) 0%, rgba(255,248,236,0.18) 24%, rgba(0,0,0,0.00) 40%, rgba(0,0,0,0.10) 100%);
+      }
+
+      .logo-area {
+        position: absolute;
+        top: 28px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 3;
         text-align: center;
-        width: calc(100% - 32px);
-        max-width: 1000px;
+        width: min(92%, 560px);
       }
 
-      .brand-area h1 {
-        font-size: 74px;
-        font-weight: 900;
-        letter-spacing: 0.18em;
-        color: #ffffff;
-        text-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
-        margin-bottom: 12px;
+      .logo-area img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 6px 18px rgba(0,0,0,0.20));
       }
 
-      .badge {
+      .soon-badge {
         display: inline-block;
+        margin-top: 10px;
         padding: 10px 18px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.14);
-        border: 1px solid rgba(255, 255, 255, 0.45);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.28em;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(120, 83, 37, 0.18);
+        color: #5a3b1b;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: #ffffff;
-        text-shadow: 0 3px 18px rgba(0, 0, 0, 0.16);
-      }
-
-      .badge span {
-        display: inline-block;
-        margin: 0 8px;
+        backdrop-filter: blur(5px);
       }
 
       .contact-panel {
         position: absolute;
         left: 50%;
-        bottom: 26px;
+        bottom: 28px;
         transform: translateX(-50%);
         z-index: 3;
-        width: calc(100% - 36px);
-        max-width: 1220px;
+        width: calc(100% - 40px);
+        max-width: 1180px;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 18px;
       }
 
       .contact-box {
-        background: rgba(0, 0, 0, 0.32);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 22px;
+        background: rgba(255, 248, 238, 0.86);
+        border: 1px solid rgba(132, 95, 51, 0.14);
+        border-radius: 24px;
         padding: 22px 24px;
         backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.10);
       }
 
       .contact-box h2 {
         font-size: 15px;
         font-weight: 800;
         letter-spacing: 0.16em;
-        color: #ffd27d;
-        margin-bottom: 12px;
         text-transform: uppercase;
+        color: #8d5a1e;
+        margin-bottom: 12px;
       }
 
       .contact-box p {
         font-size: 15px;
-        line-height: 1.7;
-        color: rgba(255, 255, 255, 0.97);
+        line-height: 1.65;
+        color: #3f2d1d;
         margin-bottom: 10px;
       }
 
@@ -130,117 +151,123 @@
       }
 
       .contact-box strong {
-        color: #fff2cf;
+        color: #6d4518;
       }
 
-      .small-line {
-        display: block;
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.88);
-        margin-top: 4px;
-        letter-spacing: 0.03em;
-      }
-
-      @media (max-width: 1100px) {
-        .brand-area h1 {
-          font-size: 58px;
-          letter-spacing: 0.14em;
+      @media (max-width: 980px) {
+        .hero-card {
+          min-height: 980px;
         }
 
         .contact-panel {
           grid-template-columns: 1fr;
-          bottom: 18px;
         }
       }
 
       @media (max-width: 700px) {
-        .brand-area {
+        .topbar {
+          padding: 14px 14px 0;
+        }
+
+        .lang {
+          top: 16px;
+          right: 16px;
+          font-size: 14px;
+        }
+
+        .hero-wrap {
+          padding: 8px 10px 16px;
+        }
+
+        .hero-card {
+          min-height: 920px;
+          border-radius: 18px;
+        }
+
+        .logo-area {
           top: 18px;
+          width: min(92%, 360px);
         }
 
-        .brand-area h1 {
-          font-size: 40px;
-          letter-spacing: 0.1em;
-          margin-bottom: 10px;
-        }
-
-        .badge {
+        .soon-badge {
           font-size: 10px;
           letter-spacing: 0.14em;
           padding: 8px 12px;
-          line-height: 1.5;
-        }
-
-        .badge span {
-          display: block;
-          margin: 2px 0;
+          margin-top: 8px;
         }
 
         .contact-panel {
-          width: calc(100% - 18px);
+          width: calc(100% - 20px);
+          bottom: 14px;
           gap: 12px;
-          bottom: 12px;
         }
 
         .contact-box {
-          padding: 15px 14px;
           border-radius: 16px;
+          padding: 16px 14px;
         }
 
         .contact-box h2 {
-          font-size: 13px;
+          font-size: 12px;
+          margin-bottom: 8px;
         }
 
         .contact-box p {
           font-size: 13px;
           line-height: 1.55;
         }
-
-        .small-line {
-          font-size: 11px;
-        }
       }
     </style>
   </head>
   <body>
-    <section class="hero">
-      <div class="overlay"></div>
-
-      <div class="brand-area">
-        <h1>BANTAT</h1>
-        <div class="badge">
-          Sehr bald
-          <span>•</span>
-          Coming Soon
-        </div>
+    <div class="page">
+      <div class="topbar">
+        <div class="lang">DE <span>|</span> TR <span>|</span> EN <span>|</span> FR</div>
       </div>
 
-      <div class="contact-panel">
-        <div class="contact-box">
-          <h2>Exporteur / Exporter</h2>
-          <p>
-            AZEMMİRAN GIDA ITH HR SAN TIC LTD ST<br />
-            AKCALAR MAH. KAPTAN SOK NO 13 A/B<br />
-            NİLÜFER - BURSA – TÜRKIYE
-          </p>
-          <p><strong>Tel:</strong> +90 5322081689 // +49 151 47416270</p>
-          <p><strong>E-mail:</strong> k.turan@bantat.eu</p>
-          <span class="small-line">Premium Hülsenfrüchte • Premium Pulses</span>
-        </div>
+      <div class="hero-wrap">
+        <section class="hero-card">
+          <img
+            src="./public/images/bantat-hero.png"
+            alt="Bantat Hero"
+            class="hero-image"
+          />
+          <div class="hero-overlay"></div>
 
-        <div class="contact-box">
-          <h2>Importeur / Importer</h2>
-          <p>
-            BANTAT LEBENSMITTEL – KENAN DURMAZ<br />
-            STUTTGARTER STRASSE 11-13<br />
-            70825 KORNTAL - MUNCHINGEN<br />
-            DEUTSCHLAND
-          </p>
-          <p><strong>Tel:</strong> +49 173 4357479</p>
-          <p><strong>E-mail:</strong> info@bantat.eu</p>
-          <span class="small-line">Deutschland Distribution • Germany Distribution</span>
-        </div>
+          <div class="logo-area">
+            <img
+              src="./public/images/bantat-logo.png"
+              alt="Bantat Logo"
+            />
+            <div class="soon-badge">Sehr bald</div>
+          </div>
+
+          <div class="contact-panel">
+            <div class="contact-box">
+              <h2>Exporteur</h2>
+              <p>
+                AZEMMİRAN GIDA ITH HR SAN TIC LTD ST<br />
+                AKCALAR MAH. KAPTAN SOK NO 13 A/B<br />
+                NİLÜFER - BURSA – TÜRKIYE
+              </p>
+              <p><strong>Tel:</strong> +90 5322081689 // +49 151 47416270</p>
+              <p><strong>E-Mail:</strong> k.turan@bantat.eu</p>
+            </div>
+
+            <div class="contact-box">
+              <h2>Importeur</h2>
+              <p>
+                BANTAT LEBENSMITTEL – KENAN DURMAZ<br />
+                STUTTGARTER STRASSE 11-13<br />
+                70825 KORNTAL - MUNCHINGEN<br />
+                DEUTSCHLAND
+              </p>
+              <p><strong>Tel:</strong> +49 173 4357479</p>
+              <p><strong>E-Mail:</strong> info@bantat.eu</p>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   </body>
 </html>
